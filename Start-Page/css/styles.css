@@ -1,0 +1,232 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;800;900&display=swap');
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root {
+   /* earthy pink */
+  --clr-icons: #8FD9D9;
+  --clr-text: #F2C1AE;
+  --clr-bg-dark: #260101;
+  --clr-bg-light: #A64B4B;
+  --clr-accent: #D98982;
+}
+
+body {
+  margin: 1em;
+  background-color: var(--clr-bg-dark);
+  color: var(--clr-text);
+  line-height: 1.5;
+  font-family: 'Raleway', sans-serif;
+}
+
+.title {
+  color: var(--clr-accent);
+  text-transform: uppercase;
+  margin: 0;
+  line-height: 1.10;
+  font-size: clamp(3rem, 10vw, 12rem);
+  font-family: 'Raleway', sans-serif;
+  font-weight: 900;
+}
+
+.welcome {
+  color: var(--clr-icons);
+  margin: 0;
+  font-size: 1.5rem;
+  /* margin-bottom: 1.5em; */
+  /* font-weight: bold; */
+}
+
+.description {
+margin-right: 5px;
+}
+  
+.eye {
+  color: var(--clr-icons);
+}
+
+.btn, .btn_login {
+  cursor: pointer;
+  display: inline-block;
+  border: 0;
+  background: transparent;
+  color: var(--clr-icons);
+  text-shadow: -1px -1px 0 #000;
+  font-size: 1.125rem;
+  padding: 0.5em;
+  position: relative;
+  align-self: start;
+  justify-self: start;
+}
+
+.btn::after, .btn_login::after {
+  content: "";
+  position: absolute;
+  background: var(--clr-accent);
+  height: 0.85em;
+  width: 75%;
+  left: 0;
+  top: 50%;
+  z-index: -1;
+  transition: transform 175ms cubic-bezier(0.91, 0, 0.55, 1.64);
+  transform-origin: bottom left;
+}
+
+.btn:hover::after,
+.btn:focus::after {
+  transform: scale(1.35, 1.85);
+}
+
+@media (min-width: 800px) {
+  body {
+  margin: 0;
+}
+
+.main-grid {
+  display: grid;
+  grid-template-columns:
+    minmax(1em, 1fr)
+    repeat(2, minmax(15rem, 35rem))
+    minmax(5rem, 10rem)
+    minmax(1em, 1fr);
+  gap: 2em;
+  position: relative;
+}
+
+main {
+  grid-column: 2 / -1;
+  display: grid;
+  grid-template-columns: subgrid;
+  grid-auto-rows: min-content;
+  grid-auto-flow: dense;
+}
+
+main::after {
+  content: "";
+  position: absolute;
+  background-color: var(--clr-bg-light);
+  top: 0;
+  bottom: 0;
+  left: -2em;
+  right: -2em;
+  grid-column: 3 / 5;
+  z-index: -10;
+}
+
+.title {
+  grid-column: 1 / 3;
+  grid-row: 1;
+}
+
+.welcome,
+.description {
+  grid-column: 1 / 2;
+}
+
+.description::after {
+  content: "HI";
+  font-size: 50vw;
+  font-weight: 600;
+  position: absolute;
+  opacity: 0.10;
+  z-index: -100;
+  line-height: 1;
+  /*     grid-column: 1 / 3; */
+  left: -0.15em;
+  top: 0;
+}
+
+
+@media (min-width: 1200px) {
+  main::after {
+  grid-column: 3 / 4;
+}
+
+
+.main-content {
+  padding: 10%;
+  flex: 1 1 80%;
+  min-height: 100vh;
+  grid-column: 2 / -1;
+  grid-row: 1 / span 4;
+  z-index: -1;
+  height: 100%;
+}
+
+.portfolio {
+  display: grid;
+  height: 100%;
+  grid-template-rows: repeat(8, 1fr);
+  grid-template-columns: repeat(5, 1fr);
+  grid-gap: 20px;
+}
+
+.portfolio-item {
+  background: #e2786a;
+  color: var(--clr-text);
+  text-shadow: -1px -1px 0 var(--clr-bg-dark);
+  font-weight: 700;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5em;
+  background-size: cover;
+  background-position: top left;
+  /* transition: all ease-in-out 300ms; */
+  position: relative;
+  z-index: 10;
+}
+
+.portfolio-item::after {
+  content: "";
+  position: absolute;
+  /* background: var(--clr-icons); */
+  height: 0.85em;
+  width: 75%;
+  left: 0;
+  top: 50%;
+  z-index: -1;
+  transition: transform 175ms cubic-bezier(0.91, 0, 0.55, 1.64);
+  transform-origin: bottom left;
+}
+
+.portfolio-item:hover::after,
+.portfolio-item:focus::after {
+  transform: scale(1.35, 1.85);
+}
+  
+.small {
+  grid-row: span 1;
+  grid-column: span 1;
+}
+  
+.medium {
+  grid-row: span 2;
+  grid-column: span 2;
+}
+  
+.large {
+  grid-row: span 3;
+  grid-column: span 3;
+}
+  
+.tall {
+  grid-row: span 3;
+  grid-column: span 2;
+}
+  
+.wide {
+  grid-row: span 2;
+  grid-column: span 3;
+}
+
+.two, .three, .five, .seven {
+  background-image: url('https://placekitten.com/400/100');
+  max-width: 100%;
+  max-height: 100%;
+}
+}

@@ -1,0 +1,229 @@
+-- phpMyAdmin SQL Dump
+-- version 5.0.2
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Gegenereerd op: 29 mei 2020 om 09:47
+-- Serverversie: 10.4.11-MariaDB
+-- PHP-versie: 7.4.5
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `garage`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Tabelstructuur voor tabel `automerken`
+--
+
+CREATE TABLE `automerken` (
+  `id` int(4) NOT NULL,
+  `merknaam` varchar(20) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Gegevens worden geëxporteerd voor tabel `automerken`
+--
+
+INSERT INTO `automerken` (`id`, `merknaam`) VALUES
+(1, 'Studebaker'),
+(2, 'Ford'),
+(3, 'Cadillac'),
+(4, 'Mercedes'),
+(5, 'Chrysler'),
+(6, 'Citroën'),
+(7, 'BMW'),
+(8, 'Fiat'),
+(9, 'Pontiac'),
+(10, 'Hyundai'),
+(11, 'Jaguar'),
+(12, 'Chevrolet'),
+(13, 'Nissan'),
+(14, 'Honda'),
+(15, 'Audi'),
+(16, 'Toyota'),
+(17, 'VW');
+
+-- --------------------------------------------------------
+
+--
+-- Tabelstructuur voor tabel `autos`
+--
+
+CREATE TABLE `autos` (
+  `auto_id` int(10) UNSIGNED NOT NULL,
+  `merk_id` smallint(5) UNSIGNED NOT NULL DEFAULT 0,
+  `jaargemaakt` year(4) NOT NULL,
+  `kmstand` mediumint(8) UNSIGNED NOT NULL,
+  `koppeling` enum('manual','automatic') NOT NULL DEFAULT 'automatic',
+  `prijs` decimal(8,2) NOT NULL,
+  `beschrijving` text DEFAULT NULL,
+  `airco` enum('automatisch','manueel','geen') DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Gegevens worden geëxporteerd voor tabel `autos`
+--
+
+INSERT INTO `autos` (`auto_id`, `merk_id`, `jaargemaakt`, `kmstand`, `koppeling`, `prijs`, `beschrijving`, `airco`) VALUES
+(1, 5, 2007, 113688, 'automatic', '13545.00', 'Green Chrysler 300. Only one owner, very carefully maintained. Top of the line, and beautifully styled, this is an outstanding ride with great performance.', 'automatisch'),
+(2, 2, 2007, 126570, 'automatic', '7540.00', 'Red Ford Focus. Great bargain as a family car.', 'automatisch'),
+(3, 12, 2012, 517, 'automatic', '20750.00', 'Demo model that\'s hardly been out on the road, this red Chevrolet Cruze is just a dream, with just about every option you could ask for. Great fuel economy, too.', 'automatisch'),
+(4, 16, 2010, 116626, 'automatic', '10549.00', 'Red Camry in good running condition. Sound electrics and bodywork. Clean interior, appears never to have been smoked in.', 'automatisch'),
+(5, 7, 2011, 124694, 'automatic', '26946.00', 'Space grey BMW 3 series with beige leather interior. BMW Factory Certified with a 6 year/100,000 mile warranty from in-service date.', 'automatisch'),
+(6, 11, 2005, 95496, 'automatic', '8549.00', 'Black Jaguar S-Type in perfect working condition. Good electrics and bodywork. Low kmstand. New tires recently fitted.', 'automatisch'),
+(7, 5, 2004, 75500, 'automatic', '6000.00', 'Black Sebring LX convertible. Very low kmstand. Excellent ride. A must-see bargain.', 'automatisch'),
+(8, 4, 2001, 100145, 'automatic', '9545.00', 'Black SLK-Class convertible. Immaculate interior. Power top and power seats. Runs like new.', 'automatisch'),
+(9, 2, 1999, 102500, 'automatic', '4545.00', 'Metallic red Mustang convertible. Economy car, very easy on fuel. No negative history. No rust or damage on paintwork.', 'automatisch'),
+(10, 16, 2002, 173658, 'automatic', '6545.00', 'So much to like about this Silver Toyota 4Runner. Runs well, good paint, tires, nice sound system.', 'automatisch'),
+(11, 3, 2005, 122250, 'automatic', '11545.00', 'Black Cadillac SRX. Only one owner. Beautiful SUV.', 'automatisch'),
+(12, 17, 2002, 155500, 'automatic', '4300.00', 'Silver Passat. Only one owner. Leather interior. Rare bargain.', 'automatisch'),
+(13, 1, 1952, 46383, 'manual', '22050.00', 'Burgundy Studebaker Roadster with newly rebuilt engine and wide whitewall tires. Three-speed manual koppeling. Runs and drives amazingly.', 'automatisch'),
+(14, 10, 2006, 124209, 'automatic', '9115.00', 'White Santa Fe. Only one owner. Leather interior and bodywork are in great shape.', 'automatisch'),
+(15, 10, 2012, 9811, 'automatic', '24549.00', 'Silver Genesis with beige leather and wood trim interior. Great handling and comfort. Low, low kmstand. Luxury at an affordable prijs.', 'automatisch'),
+(16, 14, 2005, 130500, 'manual', '7500.00', 'Five-speed manual black Civic. Super clean, with 6 CD changer. This one, you must see!', 'manueel'),
+(17, 15, 2007, 84947, 'automatic', '14549.00', 'Audi A4 Quattro. Gray with gray leather interior, and glass roof. Excellent value.', 'manueel'),
+(18, 6, 1972, 77600, 'manual', '28050.00', 'Citroen D Super with 5 speed manual koppeling in fantastic shape. Extremely well maintained, and has obviously been treasured by its owner. A real European classic.', 'manueel'),
+(19, 8, 2012, 19361, 'automatic', '14548.00', 'Yellow Fiat 500 POP. Immaculate interior and bodywork. Electrics in perfect order. Tires only slightly worn.', 'manueel'),
+(20, 12, 2002, 160550, 'automatic', '4540.00', 'Blue Impala LS with gray interior. Ideal economical vehicle with good gas kmstand. Dependable engine, new tires. prijs includes 6 month/8,500 mile warranty.', 'manueel'),
+(21, 9, 2005, 94995, 'automatic', '8145.00', 'Gold Pontiac Bonneville with low kmstand. Great condition.', 'manueel'),
+(22, 5, 2006, 102300, 'automatic', '7100.00', 'Green Town & Country sports van.', 'manueel'),
+(23, 8, 2012, 5238, 'automatic', '16045.00', 'Pearl white Fiat 500 sport hatchback. Power glass sunroof and power windows. Only one owner.', 'manueel'),
+(24, 17, 2005, 70388, 'automatic', '14050.00', 'Shadow blue Touareg in excellent condition. Heated leather seats, sun roof, and navigation. Really low kmstand. ', 'manueel'),
+(25, 13, 2012, 35000, 'automatic', '15545.00', 'Tan Altima. Low kmstand. Excellent condition.', 'manueel'),
+(26, 2, 2004, 108694, 'automatic', '10975.00', 'Top of the line black Expedition XLT 5.4 liter 4WD with every conceivable option. A truly exceptional SUV.', 'geen'),
+(27, 2, 2005, 123059, 'automatic', '7995.00', 'Blue Ford Escape. Excellent condition. A real bargain.', 'geen'),
+(28, 13, 2010, 32791, 'automatic', '20500.00', 'Red Pathfinder 4WD. Only one owner. Nicely equipped with just about every feature you could want, including third-row seats.', 'geen'),
+(29, 14, 2002, 124334, 'automatic', '5999.00', 'Silver Accord with sunroof, CD player, and all new tires. Excellent condition.', 'geen'),
+(30, 14, 2011, 27345, 'automatic', '13995.00', 'Dark gray Civic. Only one owner, very low kmstand. Great fuel economy.', 'geen'),
+(31, 12, 2011, 34256, 'automatic', '11995.00', 'Dark gray Malibu. Interior and bodywork in good condition. Low kmstand.', 'geen'),
+(32, 15, 2003, 93494, 'automatic', '9995.00', 'Silver Audi A6 with tan interior. Two previous owners. Mechanically sound and good bodywork. New tires.', 'geen'),
+(33, 3, 2005, 139534, 'automatic', '11500.00', 'Pearl white Cadillac SRX. Electrics, engine, and bodywork all in excellent condition. Only one owner. Tires have about 3/4 of their life span left.', 'geen'),
+(34, 7, 2011, 33784, 'automatic', '25899.00', 'White 3 Series 328i. Low kmstand. Bodywork in mint condition. AM/FM stereo, trip computer, power sunroof.', 'geen'),
+(35, 5, 2012, 7834, 'automatic', '16555.00', 'White Chrysler 200 with black interior. Exceptionally low kmstand ', 'geen');
+
+-- --------------------------------------------------------
+
+--
+-- Tabelstructuur voor tabel `sales`
+--
+
+CREATE TABLE `sales` (
+  `idVerkoop` int(4) NOT NULL,
+  `auto` int(4) DEFAULT NULL,
+  `verkoper` int(4) DEFAULT NULL,
+  `datum` date DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Gegevens worden geëxporteerd voor tabel `sales`
+--
+
+INSERT INTO `sales` (`idVerkoop`, `auto`, `verkoper`, `datum`) VALUES
+(1, 1, 1, '2020-05-19'),
+(2, 2, 2, '2020-05-19'),
+(3, 6, 1, '2020-05-03'),
+(4, 8, 1, '2020-05-17'),
+(5, 12, 4, '2020-05-19'),
+(6, 18, 4, '2020-04-09'),
+(7, 19, 2, '2020-04-07'),
+(8, 21, 2, '2020-05-14'),
+(9, 25, 1, '2020-04-25'),
+(10, 30, 3, '2020-04-26');
+
+-- --------------------------------------------------------
+
+--
+-- Tabelstructuur voor tabel `verkoper`
+--
+
+CREATE TABLE `verkoper` (
+  `id` int(11) NOT NULL,
+  `naam` varchar(50) NOT NULL,
+  `regio` varchar(20) NOT NULL,
+  `type` enum('professioneel','particulier','','') DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Gegevens worden geëxporteerd voor tabel `verkoper`
+--
+
+INSERT INTO `verkoper` (`id`, `naam`, `regio`, `type`) VALUES
+(1, 'Garage Vandezande', 'Noord', 'professioneel'),
+(2, 'All Car Center', 'Noord', 'particulier'),
+(3, 'Auto\'s Casteels', 'Noord', 'professioneel'),
+(4, 'ACS', 'Zuid', 'particulier');
+
+--
+-- Indexen voor geëxporteerde tabellen
+--
+
+--
+-- Indexen voor tabel `automerken`
+--
+ALTER TABLE `automerken`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexen voor tabel `autos`
+--
+ALTER TABLE `autos`
+  ADD PRIMARY KEY (`auto_id`),
+  ADD KEY `jaargemaakt` (`jaargemaakt`),
+  ADD KEY `maak_id` (`merk_id`);
+
+--
+-- Indexen voor tabel `sales`
+--
+ALTER TABLE `sales`
+  ADD PRIMARY KEY (`idVerkoop`);
+
+--
+-- Indexen voor tabel `verkoper`
+--
+ALTER TABLE `verkoper`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT voor geëxporteerde tabellen
+--
+
+--
+-- AUTO_INCREMENT voor een tabel `automerken`
+--
+ALTER TABLE `automerken`
+  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+
+--
+-- AUTO_INCREMENT voor een tabel `autos`
+--
+ALTER TABLE `autos`
+  MODIFY `auto_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+
+--
+-- AUTO_INCREMENT voor een tabel `sales`
+--
+ALTER TABLE `sales`
+  MODIFY `idVerkoop` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT voor een tabel `verkoper`
+--
+ALTER TABLE `verkoper`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
