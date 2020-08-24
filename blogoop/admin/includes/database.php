@@ -12,7 +12,7 @@ class Database
     {
         $this->connection = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
         if (mysqli_connect_errno()) {
-            die("Database connectie mislukt" . mysqli_error());
+            die("Database connectie is mislukt" . "<br>" . mysqli_error());
         }
     }
 
@@ -20,7 +20,7 @@ class Database
     private function confirm_query($result)
     {
         if (!$result) {
-            die("query niet uitgevoerd" . $this->connection->error);
+            die("query kon niet uitgevoerd worden" . "<br>" . $this->connection->error);
         }
     }
 
@@ -36,6 +36,11 @@ class Database
     {
         $escaped_string = $this->connection->real_escape_string($string);
         return $escaped_string;
+    }
+
+    public function the_insert_id()
+    {
+        return mysqli_insert_id($this->connection);
     }
 }
 $database = new Database;
